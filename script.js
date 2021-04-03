@@ -3,9 +3,7 @@ request.open("GET","https://restcountries.eu/rest/v2/all",true);
 request.send();
 request.onload=function()
 {
-    var data=JSON.parse(this.response);
-    for(i=0;i<=data.length;i++)
-    {
-        console.log(data[i].name);
-    }
+    var population = JSON.parse(this.response);
+    var total=population.reduce((acc,pop)=>{return acc+ pop.population},0);
+console.log(total);
 }
